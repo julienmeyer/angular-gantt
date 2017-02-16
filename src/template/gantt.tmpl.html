@@ -142,8 +142,8 @@
 
     <script type="text/ng-template" id="template/ganttTaskForeground.tmpl.html">
         <div class="gantt-task-foreground">
-            <div ng-if="task.truncatedRight" class="gantt-task-truncated-right">&gt;</div>
-            <div ng-if="task.truncatedLeft" class="gantt-task-truncated-left">&lt;</div>
+            <div ng-if="task.truncatedRight" class="gantt-task-truncated-right" ng-style="{'padding-right': task.truncatedRightOffset + 'px'}">&gt;</div>
+            <div ng-if="task.truncatedLeft" class="gantt-task-truncated-left" ng-style="{'padding-left': task.truncatedLeftOffset + 'px'}">&lt;</div>
         </div>
     </script>
 
@@ -191,7 +191,7 @@
                          ng-class="row.model.classes"
                          ng-repeat="row in gantt.rowsManager.visibleRows track by row.model.id"
                          ng-style="{'height': row.model.height}">
-                        <div gantt-row-label class="gantt-row-label gantt-row-background"
+                        <div class="gantt-row-label gantt-row-background"
                              ng-style="{'background-color': row.model.color}">
                         </div>
                     </div>

@@ -103,13 +103,13 @@ Directives events are entry points to build [Template Hooks](customize.md#templa
 
     A task view has been changed and displayed.
 
-- **api.tasks.on.rowChange(task, oldRow)**
+- **api.tasks.on.rowChange(task, oldRow)**, **api.tasks.on.beforeRowChange(task, newRow)**
 
-    A task has been moved from one row to another.
+    A task has been (or will be) moved from one row to another.
     
-- **api.tasks.on.viewRowChange(task, oldRow)**
+- **api.tasks.on.viewRowChange(task, oldRow)**, **api.tasks.on.beforeViewRowChange(task, newRow)**
 
-    A task view has been moved from one row to another.
+    A task view has been (or will be) moved from one row to another.
 
 - **api.tasks.on.displayed(tasks, filteredTasks, visibleTasks)**
 
@@ -267,6 +267,9 @@ Directives events are entry points to build [Template Hooks](customize.md#templa
 - **api.side.setWidth(width)**
 
     Set side area width. If given `width` is `undefined`, it will be computed automatically based on content.
+    
+    Calling this function after setting or updating gantt data may lead to unexpected results. Wrap the call in 
+    `$timeout` function if the computed width doesn't seem to use the new data to compute the width.
 
 - **api.side.getWidth()**
 
